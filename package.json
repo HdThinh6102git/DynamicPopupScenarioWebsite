@@ -1,0 +1,12 @@
+{
+  "name": "popup-test-app",
+  "version": "1.0.0",
+  "description": "Dynamic popup tester for RPA UiPath",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

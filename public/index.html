@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RPA Popup Testing Suite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header>
+    <div class="logo">
+      <span class="brand">Antigravity</span>
+      <span class="suite">RPA Testing Suite</span>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-container">
+    <section class="info-card glass">
+      <h1>Dynamic Popup Scenario Tester</h1>
+      <p>This web application generates dynamic popups based on the local configuration file to simulate real-world RPA challenges. Test your automation's popup handling capabilities.</p>
+      
+      <!-- Current Configuration Snapshot -->
+      <div class="config-display">
+        <h2>Active Configuration</h2>
+        <div class="meta-grid">
+          <div class="meta-item">
+            <span class="label">Total Popups:</span>
+            <span id="popup-count-display" class="value loading">Loading...</span>
+          </div>
+          <div class="meta-item">
+            <span class="label">Popup Type:</span>
+            <span id="popup-type-display" class="value loading">Loading...</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Start or Refresh Scenario -->
+      <div class="action-bar">
+        <button id="btn-refresh" class="btn btn-secondary">Refresh Configuration</button>
+        <button id="btn-trigger" class="btn btn-primary">Reset & Launch Scenario</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Popup container that gets loaded dynamically -->
+  <div id="popup-overlay" class="overlay hidden">
+    <!-- Popups will be rendered inside here -->
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
