@@ -233,6 +233,15 @@ btnTrigger.addEventListener('click', async () => {
 // Custom Button Listeners
 const btnCustom01 = document.getElementById('btn-custom-01');
 const btnCustom02 = document.getElementById('btn-custom-02');
+const btnLogout = document.getElementById('btn-logout');
+
+if (btnLogout) {
+  btnLogout.addEventListener('click', () => {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('user');
+    window.location.href = 'login.html';
+  });
+}
 
 if (btnCustom01) {
   btnCustom01.addEventListener('click', () => {

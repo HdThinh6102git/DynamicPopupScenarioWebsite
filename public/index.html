@@ -8,6 +8,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    // Authentication check before rendering anything
+    if (localStorage.getItem('isLoggedIn') !== 'true') {
+      window.location.href = 'login.html';
+    }
+  </script>
 </head>
 <body>
   <!-- Header / Navigation -->
@@ -15,6 +21,9 @@
     <div class="logo">
       <span class="brand">Antigravity</span>
       <span class="suite">RPA Testing Suite</span>
+    </div>
+    <div class="header-actions">
+      <button id="btn-logout" class="btn btn-logout">Logout</button>
     </div>
   </header>
 
