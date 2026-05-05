@@ -1,7 +1,7 @@
 {
   "_comment_display_modes": "Values available for display_mode: 'cascade' (scattered/cascading offsets) or 'overlap' (stacked exactly on top of each other)",
   "_comment_popup_types": "Values available for popup type: 'promotional', 'newsletter', 'notification', 'cookie', 'survey'",
-  "display_mode": "overlap",
+  "display_mode": "cascade",
   "popups": [
     {
       "type": "promotional",
@@ -9,19 +9,19 @@
     },
     {
       "type": "newsletter",
-      "count": 2
+      "count": 0
     },
     {
       "type": "notification",
-      "count": 2
+      "count": 0
     },
     {
       "type": "cookie",
-      "count": 2
+      "count": 0
     },
     {
       "type": "survey",
-      "count": 2
+      "count": 0
     }
   ]
 }

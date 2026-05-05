@@ -181,6 +181,37 @@ function removePopupModal(popupId) {
 // Expose the function to the global scope
 window.removePopupModal = removePopupModal;
 
+// Custom Popup Function
+function showCustomPopup(message) {
+  const uniqueId = `custom-popup-${Date.now()}`;
+  activePopupsCount++;
+
+  const popupModal = document.createElement('div');
+  popupModal.className = `popup-modal popup-notification`;
+  popupModal.id = uniqueId;
+  popupModal.style.zIndex = 2000 + activePopupsCount;
+  popupModal.style.top = '50%';
+  popupModal.style.left = '50%';
+  popupModal.style.transform = 'translate(-50%, -50%)';
+
+  const closeButton = document.createElement('button');
+  closeButton.className = 'close-x';
+  closeButton.innerHTML = '&times;';
+  closeButton.id = `btn-close-x-${uniqueId}`;
+  closeButton.onclick = () => removePopupModal(uniqueId);
+
+  const popupInnerContent = `
+    <h3>Action Triggered</h3>
+    <p class="body">${message}</p>
+    <button class="btn btn-primary" onclick="removePopupModal('${uniqueId}')">Dismiss</button>
+  `;
+
+  popupModal.appendChild(closeButton);
+  popupModal.insertAdjacentHTML('beforeend', popupInnerContent);
+  popupOverlay.appendChild(popupModal);
+  popupOverlay.classList.remove('hidden');
+}
+
 // Event listeners
 btnRefresh.addEventListener('click', async () => {
   await fetchConfig();
@@ -192,6 +223,22 @@ btnTrigger.addEventListener('click', async () => {
   await fetchConfig();
   displayPopupsScenario();
 });
+
+// Custom Button Listeners
+const btnCustom01 = document.getElementById('btn-custom-01');
+const btnCustom02 = document.getElementById('btn-custom-02');
+
+if (btnCustom01) {
+  btnCustom01.addEventListener('click', () => {
+    showCustomPopup('This is click 01');
+  });
+}
+
+if (btnCustom02) {
+  btnCustom02.addEventListener('click', () => {
+    showCustomPopup('This is click 02');
+  });
+}
 
 // Auto initialize and run scenario on load
 window.addEventListener('DOMContentLoaded', async () => {
