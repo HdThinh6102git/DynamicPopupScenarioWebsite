@@ -174,6 +174,12 @@ function removePopupModal(popupId) {
     if (activePopupsCount <= 0) {
       popupOverlay.classList.add('hidden');
       console.log('All visible popups have been successfully dismissed.');
+
+      // Re-enable custom buttons
+      const btn01 = document.getElementById('btn-custom-01');
+      const btn02 = document.getElementById('btn-custom-02');
+      if (btn01) btn01.disabled = false;
+      if (btn02) btn02.disabled = false;
     }
   }
 }
@@ -231,12 +237,20 @@ const btnCustom02 = document.getElementById('btn-custom-02');
 if (btnCustom01) {
   btnCustom01.addEventListener('click', () => {
     showCustomPopup('This is click 01');
+    if (btnCustom02) {
+      btnCustom02.disabled = true;
+      console.log('Button 2 has been disabled.');
+    }
   });
 }
 
 if (btnCustom02) {
   btnCustom02.addEventListener('click', () => {
     showCustomPopup('This is click 02');
+    if (btnCustom01) {
+      btnCustom01.disabled = true;
+      console.log('Button 1 has been disabled.');
+    }
   });
 }
 

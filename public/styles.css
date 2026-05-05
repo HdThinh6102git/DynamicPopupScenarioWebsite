@@ -183,6 +183,14 @@ p {
   border-color: var(--text-secondary);
 }
 
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  filter: grayscale(1);
+  transform: none !important;
+  box-shadow: none !important;
+}
+
 /* Modal and Overlay System */
 .overlay {
   position: fixed;
