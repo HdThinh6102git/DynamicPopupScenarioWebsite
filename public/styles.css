@@ -372,14 +372,24 @@ p {
   100% { opacity: 0.6; }
 }
 
-/* Floating Actions on the Right */
-.floating-actions {
+/* Floating Actions on the Bottom Left */
+.floating-actions-left {
+  position: fixed;
+  left: 2rem;
+  bottom: 2rem;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  z-index: 500;
+}
+
+/* Floating Actions on the Bottom Right */
+.floating-actions-right {
   position: fixed;
   right: 2rem;
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: 2rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 1rem;
   z-index: 500;
 }
@@ -391,7 +401,27 @@ p {
 }
 
 .floating-btn:hover {
-  transform: translateX(-5px);
+  transform: translateY(-5px);
+}
+
+.btn-accent {
+  background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+  color: white;
+}
+
+.btn-accent:hover {
+  background: linear-gradient(135deg, #d97706 0%, #dc2626 100%);
+  box-shadow: 0 4px 14px 0 rgba(245, 158, 11, 0.5);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+}
+
+.btn-success:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.5);
 }
 
 /* Login Page Styles */

@@ -178,8 +178,12 @@ function removePopupModal(popupId) {
       // Re-enable custom buttons
       const btn01 = document.getElementById('btn-custom-01');
       const btn02 = document.getElementById('btn-custom-02');
+      const btn03 = document.getElementById('btn-custom-03');
+      const btn04 = document.getElementById('btn-custom-04');
       if (btn01) btn01.disabled = false;
       if (btn02) btn02.disabled = false;
+      if (btn03) btn03.disabled = false;
+      if (btn04) btn04.disabled = false;
     }
   }
 }
@@ -233,6 +237,8 @@ btnTrigger.addEventListener('click', async () => {
 // Custom Button Listeners
 const btnCustom01 = document.getElementById('btn-custom-01');
 const btnCustom02 = document.getElementById('btn-custom-02');
+const btnCustom03 = document.getElementById('btn-custom-03');
+const btnCustom04 = document.getElementById('btn-custom-04');
 const btnLogout = document.getElementById('btn-logout');
 
 if (btnLogout) {
@@ -246,21 +252,97 @@ if (btnLogout) {
 if (btnCustom01) {
   btnCustom01.addEventListener('click', () => {
     showCustomPopup('This is click 01');
-    if (btnCustom02) {
-      btnCustom02.disabled = true;
-      console.log('Button 2 has been disabled.');
-    }
+    if (btnCustom02) btnCustom02.disabled = true;
+    if (btnCustom03) btnCustom03.disabled = true;
+    if (btnCustom04) btnCustom04.disabled = true;
+    console.log('All other buttons disabled.');
   });
 }
 
 if (btnCustom02) {
   btnCustom02.addEventListener('click', () => {
     showCustomPopup('This is click 02');
-    if (btnCustom01) {
-      btnCustom01.disabled = true;
-      console.log('Button 1 has been disabled.');
-    }
+    if (btnCustom01) btnCustom01.disabled = true;
+    if (btnCustom03) btnCustom03.disabled = true;
+    if (btnCustom04) btnCustom04.disabled = true;
+    console.log('All other buttons disabled.');
   });
+}
+
+if (btnCustom03) {
+  btnCustom03.addEventListener('click', () => {
+    // Open popup1 with real URL
+    const popup1 = window.open('popup1.html', 'popup1', 'width=400,height=320,top=150,left=150');
+    // Open popup2 with real URL, slightly offset so they overlap
+    const popup2 = window.open('popup2.html', 'popup2', 'width=400,height=320,top=190,left=190');
+
+    if (btnCustom01) btnCustom01.disabled = true;
+    if (btnCustom02) btnCustom02.disabled = true;
+    if (btnCustom03) btnCustom03.disabled = true;
+    if (btnCustom04) btnCustom04.disabled = true;
+    console.log('All buttons disabled while popups are open.');
+
+    // Monitor closure of both popups
+    const checkPopupTimer = setInterval(() => {
+      const isClosed1 = !popup1 || popup1.closed;
+      const isClosed2 = !popup2 || popup2.closed;
+
+      if (isClosed1 && isClosed2) {
+        clearInterval(checkPopupTimer);
+        if (btnCustom01) btnCustom01.disabled = false;
+        if (btnCustom02) btnCustom02.disabled = false;
+        if (btnCustom03) btnCustom03.disabled = false;
+        if (btnCustom04) btnCustom04.disabled = false;
+        console.log('Both popups are closed. All buttons are now enabled.');
+      }
+    }, 500);
+  });
+}
+
+if (btnCustom04) {
+  btnCustom04.addEventListener('click', () => {
+    showSuccessPopup('Congratulations! Scenario completed successfully!');
+    if (btnCustom01) btnCustom01.disabled = true;
+    if (btnCustom02) btnCustom02.disabled = true;
+    if (btnCustom03) btnCustom03.disabled = true;
+    console.log('All other buttons disabled.');
+  });
+}
+
+// Success Congratulatory Popup Function
+function showSuccessPopup(message) {
+  const uniqueId = `success-popup-${Date.now()}`;
+  activePopupsCount++;
+
+  const popupModal = document.createElement('div');
+  popupModal.className = `popup-modal popup-newsletter`;
+  popupModal.id = uniqueId;
+  popupModal.style.zIndex = 3000 + activePopupsCount;
+  popupModal.style.top = '50%';
+  popupModal.style.left = '50%';
+  popupModal.style.transform = 'translate(-50%, -50%)';
+
+  const closeButton = document.createElement('button');
+  closeButton.className = 'close-x';
+  closeButton.innerHTML = '&times;';
+  closeButton.id = `btn-close-x-${uniqueId}`;
+  closeButton.onclick = () => removePopupModal(uniqueId);
+
+  const popupInnerContent = `
+    <h3 style="color: #10b981; margin-top: 0;">🎉 Congratulations!</h3>
+    <p class="body" style="font-size: 1.1rem; color: #f3f4f6; margin-bottom: 1.5rem;">${message}</p>
+    <button class="btn btn-primary" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); width: 100%; border: none; padding: 0.75rem;" onclick="removePopupModal('${uniqueId}')">Dismiss</button>
+  `;
+
+  popupModal.appendChild(closeButton);
+  popupModal.insertAdjacentHTML('beforeend', popupInnerContent);
+  popupOverlay.appendChild(popupModal);
+  popupOverlay.classList.remove('hidden');
+
+  // Automatically close after 3 seconds
+  setTimeout(() => {
+    removePopupModal(uniqueId);
+  }, 3000);
 }
 
 // Auto initialize and run scenario on load

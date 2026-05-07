@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Window Popup 1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #0b0f19;
+      --text-primary: #f3f4f6;
+      --text-secondary: #9ca3af;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --font-body: 'Inter', sans-serif;
+      --font-title: 'Outfit', sans-serif;
+    }
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      margin: 0;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    .card {
+      background: rgba(17, 24, 39, 0.7);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+      width: 100%;
+      max-width: 320px;
+    }
+    h2 {
+      font-family: var(--font-title);
+      color: #f59e0b;
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      font-size: 1.5rem;
+    }
+    p {
+      color: var(--text-secondary);
+      line-height: 1.5;
+      font-size: 0.9rem;
+      margin-bottom: 1.25rem;
+    }
+    .btn {
+      font-family: var(--font-body);
+      font-weight: 600;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+      color: white;
+      transition: all 0.2s;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Notice Window #1</h2>
+    <p>This is the first dynamic popup window opened by clicking Button 3. Close this window to progress.</p>
+    <button class="btn" onclick="window.close()">Close Popup</button>
+  </div>
+</body>
+</html>

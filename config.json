@@ -5,23 +5,23 @@
   "popups": [
     {
       "type": "promotional",
-      "count": 2
+      "count": 1
     },
     {
       "type": "newsletter",
-      "count": 0
+      "count": 1
     },
     {
       "type": "notification",
-      "count": 0
+      "count": 1
     },
     {
       "type": "cookie",
-      "count": 0
+      "count": 1
     },
     {
       "type": "survey",
-      "count": 0
+      "count": 1
     }
   ]
 }
